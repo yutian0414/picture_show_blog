@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<html>
+<head>
+<style>
+#header{
+	background-color: blue;
+	font-size: 28px;
+	margin-top:-8px;
+	margin-left: -8px;
+	margin-right: -8px;
+	height: 80px;
+	color:white;
+	text-align:left;
+	padding-left:15%;
+	padding-top:0%;
+	overflow: hidden;
+}
+#leftform{
+	line-height: 30px;
+	background-color: orange;
+	width:20%;
+	min-height: 888px;
+	float:left;
+	padding:0px;
+	margin-left:-8px;
+
+}
+#rightform{
+	background-color: rgb(255,255,255);
+	padding:20px;
+	margin-right:-8px;
+	overflow: hidden;
+	height: 100%;
+}
+#footform{
+	background-color: black;
+	color:white;
+	clear:both;
+	text-align:center;
+	padding: 0px;
+	margin-left:-8px;
+	margin-right: -8px;
+	marker-end: -8px;
+}
+#content{
+	position:relative;
+	float: left;
+	width:60%;
+	align-self:auto; 
+	border-style: solid;
+	border-color: black;
+	overflow: hidden;
+	margin: -4px;
+
+}
+#imagefram{
+	position: relative;
+	float:left;
+	width:100%;
+	overflow: hidden;
+
+}
+#textfram{
+	position: relative;
+	width: 30%;
+	height: 50%;
+	float: right;
+	margin-left: -8px;
+	background-color: white;
+	overflow: hidden;
+	text-align: left;
+}
+#imagetitlefram{
+	position: relative;
+	height: 20%;
+	width: 70%;
+	float:left;
+	text-align: center;
+	overflow: hidden;
+
+}
+
+#image{
+	clear:both;
+	display: block;
+	margin: auto;
+	width: 100%;
+}
+
+.judgement{
+	height: 25px;
+	width:35px;
+	font-size:9px;
+	text-align: center;
+}
+
+a:link{color: black;}
+a:visited{text-decoration: none;text-decoration-color: white;color:white;}
+a:hover{text-decoration: underline;text-decoration-color: yellow;color:yellow;}
+a:active{text-decoration: underline;text-decoration-color: red;color:red;}
+
+</style>
+<title>
+	雨田的摄影show
+</title>
+</head>
+<body style="height:100%">
+<div id="header" >
+	<div style="float:left;width:50%"><p>欢迎访问雨田的摄影博客!</p></div>
+	<div><a  style="font-size:17px;color:white;text-align:center" href="http://www.jianshu.com/users/bbcd54745752/latest_articles" ><p>雨田的简书</p></a></div>
+</div>
+
+<div id="leftform" >
+<ul>
+	<li>目录</li>
+	<li>
+		<ul> 
+		{% for bs in bigsitesitems %}
+		<li>{{bs.bigsitesname}}
+			<ul>
+				{% for site in sitesitems %}
+					{% if site.bigsites.bigsitesname == bs.bigsitesname %}
+						<li class="links" ><a href="{{ site.siteid }}"> {{ site.sitename }}</li></a>
+					{% endif %}
+
+				{% endfor %}
+				
+			</ul>
+		</li>
+		{% endfor %}
+
+		<li>未完待续......</li>
+		<ul>
+	</li>
+</ul>
+</div>
+<div id="rightform">
+		{% for var in imageitems %}
+		<div id="content">
+			<div id="imagefram"> <img id="image" src='/static/{{var.image}}'/></div>
+			<div id="imagetitlefram"><p>{{var.imagename}}</p></div>
+			<div id="judge">
+				<form action="">
+				<p>
+					<input type="button" class="judgement" value="好赞">
+					<input type="button" class="judgement" value="还好">
+					<input type="button" class="judgement" value="一般">
+					<input type="button" class="judgement" value="较差">
+					<input type="button" class="judgement" value="垃圾">
+				</p>
+				</form>
+			</div>
+		</div>
+		<div>
+			<div id="textfram"><p> {{var.imagetext}}</p></div>
+		</div>
+		{% endfor %}
+
+</div>
+<div id="footform">
+<p>Copyright:Yutian</p>
+</div>
+</body>
+</html>	

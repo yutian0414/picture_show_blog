@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> welcome to my blog </title>
+	<style type="text/css">
+	p{
+		color: rgb(255,255,255)
+	}
+	</style>
+</head>
+<body bgcolor="black">
+{% include "head.html" %}
+<p>this is my first blog!</p>
+<p>it is very simple but i will make it beautiful and complex laterly.</p>
+<!--p>{{string}}<br>
+up line is the parameter got.</p!-->
+<p>I need to learn those program languages!</p>
+{% for key,value in liststr.items %}
+<p> <font color="red" size="5"> <strong>{% if key == "Web" %}{{key}}:{{value}}{% endif%}</strong> </font></p>
+{% endfor %}
+<p>{{request.user}}</p>
+<p>{{request.path}}</p>
+<p>{{request.GET.urlencode}}</p>
+<p></p>
+<p>{{str}}</p>
+<form method="post">
+{% csrf_token %}
+<p>{{form}}</p>
+<input type="submit" value="submit">
+</form>
+
+{% for var in imageitems %}
+<img src="/static/{{ var.image}}" width="700" />
+<p color="white"> {{var.image}} </p>
+{% endfor %}
+</body>
+</html>	
